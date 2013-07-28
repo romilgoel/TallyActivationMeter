@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <title>&nbsp;</title>
+	<title>&nbsp;</title>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="cordova/cordova.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> 
 		<style>
+		html
+		{height:100%;}
+		body
+		{height:100%;}
 			.ui-footer 
 			{
  			    position: absolute !important;
@@ -18,19 +21,9 @@
 			}
 			.classOuterBox
 			{
-				width : 100%;
+				width  : 100%;
 				height : 100%;
-				background : "lightgrey";
-				
-			}
-			.classInnerBox
-			{
-				padding: 5px;
-				
-			}
-			.classButtonContainer
-			{
-				text-align : center;
+				background : black;
 			}
 			.classButton
 			{
@@ -51,21 +44,24 @@
 				font-weight: bold;
 				color: white;
 				font-size: 20px;
+				text-shadow: 0 0px 0 #FFF !important;
 			}
 			.classItemHeaderText
 			{
 				font-weight: bold;
 				font-size: 16px;
-				background: #AA1F1F;
+				background: #3b544d;
+				text-shadow: 0 0px 0 #FFF !important;
+				color:white;
 			}
 			.classTableRow
 			{
 				background: lightgrey;
-				text-align: center;
+				text-align: right;
 				font-size: 20px;
 				color: black;
 				font-weight: bold;
-
+				padding-right:10px;
 			}
 			.classLeftCount
 			{
@@ -84,63 +80,51 @@
 			}
 			.classItemRowHeader
 			{
-				background: grey;
+			width:40%;
+				background: #6B998D;
 				text-align: center;
 				font-size: 14px;
 				font-weight: bold;
+				padding : 5px;
+				text-shadow: 0 0px 0 #FFF !important;
 			}
+			
 		</style>
 		<script>
-		
-		//document.addEventListener("deviceready", onDeviceReady, false);
-		var urlText  = "http://www.tallysolutions.com/tallyweb/modules/mis/sales/CActivationMeterWIC.php?strEventID=102&strViewMode=1&strForMTPID=0&strRandom=0.792709267931059&_=1374954890405";
-			
- 			function onDeviceReady() {
-		    $.ajax({
-				url : urlText	,
-				beforeSend : function(){
-					$.mobile.loading( 'show');
-				},
-				error : function(){
-					alert("Error occured");
-				},
-				success : function(data){
-					console.log(data);
-						}
-				});
-				}
-				//onDeviceReady();		
-	/*		$(document).ready(function(){
-				$.support.cors                 = true;
+			$(document).ready(function(){
+		$.support.cors                 = true;
         $.mobile.allowCrossDomainPages = true;
         $.mobile.pushStateEnabled      = false;
 			var urlText  = "http://www.tallysolutions.com/tallyweb/modules/mis/sales/CActivationMeterWIC.php?strEventID=102&strViewMode=1&strForMTPID=0&strRandom=0.792709267931059&_=1374954890405";
-			$.ajax({
+		/*	$.ajax({
 				url:urlText,
-                          type:'GET',
+                          type:'POST',
                           cache: false,
-                          dataType:'script',
-                          error:function(){},
-                          success:function(data)
+                          dataType:'jsonp',
+						   crossDomain: true,
+						  contentType : 'application/json; charset=UTF-8',
+                          error:function(){console.log("Error Occured!!!");},
+                          success:function(d)
                           {
                               //response = eval( '(' + data + ')' );
                              // response = data ;
-                              console.log(data);
+                              console.log(d);
                               //alert(data.length);
                            }
 			});	
 				
-			});*/
+		*/
+			});
 		</script>
 	</head>
-<body>
+	<body style="">
 		
 		<div class="classOuterBox">
 			<div class="classInnerBox">
 				<div class="classContainer">
 					<div class='classMeterHeader'><span class='classHeaderText'>Tally 2013-14</span></div>
 					
-					<div class='classItemContainer'>
+				<!--	<div class='classItemContainer'>
 						<div class='classItemHeaderText'>New Activations</div>
 						<table style='width:100%;'>
 						<tr class='classItemRowHeader'>
@@ -154,9 +138,74 @@
 							<td class='classRightCount'>3</td>
 						</tr>
 						</table>
+					</div>-->
+					
+					<div style='width:90%;margin:auto;margin-top:8px;'>
+						<table style='width:100%;'>
+						<tr class='classItemHeaderText'>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>New Activations<span style='float:right;margin-right:10px;'>43241</span></td>
+						</tr>
+						<tr >
+							<td class='classItemRowHeader'>Yesterday</td>
+							<td colspan=2 class='classTableRow'>192</td>
+						</tr>
+						<tr>
+							<td class='classItemRowHeader'>Today</td>
+							<td colspan=2 class='classTableRow'>23</td>
+						</tr>
+						</table>
 					</div>
 					
-					<div class='classItemContainer'>
+					<div style='width:90%;margin:auto;margin-top:8px;'>
+						<table style='width:100%;'>
+						<tr class='classItemHeaderText'>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Tally Server 9<span style='float:right;margin-right:10px;'>398</span></td>
+							
+						</tr>
+						<tr >
+							<td class='classItemRowHeader'>Yesterday</td>
+							<td colspan=2 class='classTableRow'>3</td>
+						</tr>
+						<tr>
+							<td class='classItemRowHeader'>Today</td>
+							<td colspan=2 class='classTableRow'>2</td>
+						</tr>
+						</table>
+					</div>
+					<div style='width:90%;margin:auto;margin-top:8px;'>
+						<table style='width:100%;'>
+						<tr class='classItemHeaderText'>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Tally.Net Subscription<span style='float:right;margin-right:10px;'>333241</span></td>
+							
+						</tr>
+						<tr >
+							<td class='classItemRowHeader'>Yesterday</td>
+							<td colspan=2 class='classTableRow'>1002</td>
+						</tr>
+						<tr>
+							<td class='classItemRowHeader'>Today</td>
+							<td colspan=2 class='classTableRow'>487</td>
+						</tr>
+						</table>
+					</div>
+					<div style='width:90%;margin:auto;margin-top:8px;'>
+						<table style='width:100%;'>
+						<tr class='classItemHeaderText'>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Upgrades<span style='float:right;margin-right:10px;'>8022</span></td>
+							
+						</tr>
+						<tr >
+							<td class='classItemRowHeader'>Yesterday</td>
+							<td colspan=2 class='classTableRow'>89</td>
+						</tr>
+						<tr>
+							<td class='classItemRowHeader'>Today</td>
+							<td colspan=2 class='classTableRow'>23</td>
+						</tr>
+						</table>
+					</div>
+					<br/><br/><br/><br/><br/><br/><br/><br/><br/> 	
+					<!--<div class='classItemContainer'>
 						<div class='classItemHeaderText'>Tally Server 9</div>
 						<table style='width:100%;'>
 						<tr class='classItemRowHeader'>
@@ -202,9 +251,10 @@
 							<td class='classRightCount'>3</td>
 						</tr>
 						</table>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
 		
-	</body></html>
+	</body>
+</html>
