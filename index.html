@@ -102,8 +102,10 @@
 				font-weight : normal !important;
 			}
 			
+			
 		</style>
 		<script>
+		var ActiArr = [23678,190,33,2];
 			$(document).ready(function(){
 		$.support.cors                 = true;
         $.mobile.allowCrossDomainPages = true;
@@ -122,11 +124,38 @@
                               //response = eval( '(' + data + ')' );
                              // response = data ;
                               console.log(d);
+							  UpdateMeterValue(d);
                               //alert(data.length);
                            }
 			});	
 				
 		*/
+		
+		setInterval(function(){
+			UpdateMeterValue();
+		},3000)
+		function UpdateMeterValue(d)
+		{
+			var ActiVal = Math.floor(Math.random()*3);
+			ActiArr[0] = ActiArr[0] + ActiVal;
+			ActiArr[2] = ActiArr[2] + ActiVal;
+			
+			UpdateActivations();
+			//UpdateTS9();
+			//UpdateTNS();
+			//UpdateUpgrades();
+			
+		}
+		
+		function UpdateActivations(  )
+		{
+			$(".TotalActi").text(ActiArr[0]);
+			$(".YestActi") .text(ActiArr[1]);
+			$(".TodayActi").text(ActiArr[2]);
+			
+			$(".ActiChange").text("("+(Number(ActiArr[3])+(Math.random()*5).toFixed(2))+"%▲)");
+			
+		}
 			});
 		</script>
 	</head>
@@ -139,6 +168,9 @@
 			
 			<div data-role="panel" id="mypanel" data-position="left" data-display="overlay" data-theme='a'>
 			<input type='text' placeholder="Search" />
+			<ul>
+				<li class="contentLink">Link</li>
+			</ul>
 				<hr/>
 			<h3>Detailed Report</h3>
 				<hr/>
@@ -176,15 +208,15 @@
 					<div style='width:90%;margin:auto;margin-top:8px;'>
 						<table style='width:100%;'>
 						<tr class='classItemHeaderText'>
-							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>New Activations<span style='float:right;margin-right:10px;'>43241</span></td>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>New Activations<span style='float:right;margin-right:10px;' class='TotalActi'>23678</span></td>
 						</tr>
 						<tr >
 							<td class='classItemRowHeader'>Yesterday</td>
-							<td colspan=2 class='classTableRow'>192</td>
+							<td colspan=2 class='classTableRow YestActi'>190</td>
 						</tr>
 						<tr>
 							<td class='classItemRowHeader'>Today</td>
-							<td colspan=2 class='classTableRow'>23<span class='classLoss'>(25.2%▼)</span></td>
+							<td colspan=2 class='classTableRow'><span class='TodayActi'>33</span><span class='classProfit ActiChange'>(25.2%▲)</span></td>
 						</tr>
 						</table>
 					</div>
@@ -192,52 +224,52 @@
 					<div style='width:90%;margin:auto;margin-top:8px;'>
 						<table style='width:100%;'>
 						<tr class='classItemHeaderText'>
-							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Tally Server 9<span style='float:right;margin-right:10px;'>398</span></td>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Tally Server 9<span style='float:right;margin-right:10px;' class='TotalTS9'>398</span></td>
 							
 						</tr>
 						<tr >
 							<td class='classItemRowHeader'>Yesterday</td>
-							<td colspan=2 class='classTableRow'>3</td>
+							<td colspan=2 class='classTableRow YestTS9'>3</td>
 						</tr>
 						<tr>
 							<td class='classItemRowHeader'>Today</td>
-							<td colspan=2 class='classTableRow'>2<span class='classProfit'>(20.0%▲)</span></td>
+							<td colspan=2 class='classTableRow TodayTS9'>2<span class='classLoss TS9Change'>(50.0%▼)</span></td>
 						</tr>
 						</table>
 					</div>
 					<div style='width:90%;margin:auto;margin-top:8px;'>
 						<table style='width:100%;'>
 						<tr class='classItemHeaderText'>
-							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Tally.Net<span style='float:right;margin-right:10px;'>333241</span></td>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Tally.Net<span style='float:right;margin-right:10px;' class='TotalTNS'>333241</span></td>
 							
 						</tr>
 						<tr >
 							<td class='classItemRowHeader'>Yesterday</td>
-							<td colspan=2 class='classTableRow'>1002</td>
+							<td colspan=2 class='classTableRow YestTNS'>1002</td>
 						</tr>
 						<tr>
 							<td class='classItemRowHeader'>Today</td>
-							<td colspan=2 class='classTableRow'>487<span class='classProfit'>(14.2%▲)</span></td>
+							<td colspan=2 class='classTableRow TodayTNS'>487<span class='classProfit TNSChange'>(14.2%▲)</span></td>
 						</tr>
 						</table>
 					</div>
 					<div style='width:90%;margin:auto;margin-top:8px;'>
 						<table style='width:100%;'>
 						<tr class='classItemHeaderText'>
-							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Upgrades<span style='float:right;margin-right:10px;'>8022</span></td>
+							<td colspan=3 style='font-weight:bold;font-size:20px;padding:10px;'>Upgrades<span style='float:right;margin-right:10px;' class='TotalUpgrades'>8022</span></td>
 							
 						</tr>
 						<tr >
 							<td class='classItemRowHeader'>Yesterday</td>
-							<td colspan=2 class='classTableRow'>89</td>
+							<td colspan=2 class='classTableRow YestUpgrades'>89</td>
 						</tr>
 						<tr>
 							<td class='classItemRowHeader'>Today</td>
-							<td colspan=2 class='classTableRow'>23<span class='classProfit'>(22.4%▲)</span></td>
+							<td colspan=2 class='classTableRow TodayUpgrades'>23<span class='classProfit UpgradesChange'>(22.4%▲)</span></td>
 						</tr>
 						</table>
 					</div>
-					<br/><br/><br/><br/><br/><br/><br/><br/><br/> 	
+					<br/><br/><br/><br/>
 					<!--<div class='classItemContainer'>
 						<div class='classItemHeaderText'>Tally Server 9</div>
 						<table style='width:100%;'>
